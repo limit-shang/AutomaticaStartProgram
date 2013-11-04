@@ -1,0 +1,98 @@
+﻿<Window x:Class="AutomaticStartProgram.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="AutomaticStartProgram" Height="400" Width="800">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <DataGrid Name="dataGridPathsView" AutoGenerateColumns="False" Height="200" Margin="2" IsReadOnly="False" HeadersVisibility="None" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="工  作" IsReadOnly="True" MinWidth="200" Binding="{Binding Path=Value}" ></DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu Name="dataGridPathsViewMenu" StaysOpen="True">
+                        <MenuItem Header="编辑">
+                            <MenuItem Command="ApplicationCommands.Copy"/>
+                            <MenuItem Command="ApplicationCommands.Cut"/>
+                            <MenuItem Command="ApplicationCommands.Paste"/>
+                        </MenuItem>
+                        <MenuItem Name="dataGridPathsViewMenuItemDelete" Header="删除" Click="dataGridPathsViewMenuItemDelete_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RichTextBox Name="richTextBoxProgramPath" Grid.Column="0" Margin="2" ToolTip="请拖动要添加的程序到此处" AllowDrop="True"></RichTextBox>
+                <Button Name="buttonAddProgram" Grid.Column="1" Margin="2" >添  加</Button>
+            </Grid>
+            <Button Name="btnStart" Margin="2" Width="70" Height="30">启  动</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <DataGrid Name="dataGridJobsView" AutoGenerateColumns="False" Height="200" Margin="2" IsReadOnly="False" CanUserAddRows="False" 
+                      CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="工  作" IsReadOnly="True"  Width="*" Binding="{Binding Path=Content}" ></DataGridTextColumn>
+                    <!--<DataGridComboBoxColumn Header="状  态" Width="70" SelectedItemBinding="{Binding Path=State, Mode=TwoWay}">
+                        <DataGridComboBoxColumn.ItemsSource>
+                            <col:ArrayList>
+                                <sys:String>未开始</sys:String>
+                                <sys:String>进行中</sys:String>
+                                <sys:String>已完成</sys:String>
+                            </col:ArrayList>
+                        </DataGridComboBoxColumn.ItemsSource>
+                    </DataGridComboBoxColumn>-->
+                    <DataGridTemplateColumn Header="状  态" Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=State}" ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                <ComboBox Name="comboBoxJobState" SelectionChanged="comboBoxJobState_SelectionChanged" SelectedItem="{Binding Path=State, Mode=TwoWay}" Text="{Binding Path=State, Mode=TwoWay}">
+                                    <ComboBox.ItemsSource>
+                                        <col:ArrayList>
+                                            <sys:String>未开始</sys:String>
+                                            <sys:String>进行中</sys:String>
+                                            <sys:String>已完成</sys:String>
+                                        </col:ArrayList>
+                                    </ComboBox.ItemsSource>
+                                </ComboBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu Name="dataGridJobsViewMenu" StaysOpen="True">
+                        <MenuItem Header="编辑">
+                            <MenuItem Command="ApplicationCommands.Copy"/>
+                            <MenuItem Command="ApplicationCommands.Cut"/>
+                            <MenuItem Command="ApplicationCommands.Paste"/>
+                        </MenuItem>
+                        <MenuItem Name="dataGridJobsViewMenuItemDelete" Header="删除" Click="dataGridJobsViewMenuItemDelete_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="textBoxJob" Grid.Column="0" Margin="2"></TextBox>
+                <Button Name="buttonAddJob" Grid.Column="1" Margin="2">添  加</Button>
+            </Grid>
+            <Button Name="btnSave" Margin="2" Width="70" Height="30">保  存</Button>
+        </StackPanel>
+    </Grid>
+</Window>

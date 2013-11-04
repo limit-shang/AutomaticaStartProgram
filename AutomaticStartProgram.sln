@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticStartProgram", "AutomaticStartProgram\AutomaticStartProgram.csproj", "{889CD230-3B35-4B16-985F-B4B195CE674B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{889CD230-3B35-4B16-985F-B4B195CE674B}.Debug|x86.ActiveCfg = Debug|x86
+		{889CD230-3B35-4B16-985F-B4B195CE674B}.Debug|x86.Build.0 = Debug|x86
+		{889CD230-3B35-4B16-985F-B4B195CE674B}.Release|x86.ActiveCfg = Release|x86
+		{889CD230-3B35-4B16-985F-B4B195CE674B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
