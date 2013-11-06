@@ -12,7 +12,7 @@
         <StackPanel Grid.Column="0">
             <DataGrid Name="dataGridPathsView" AutoGenerateColumns="False" Height="200" Margin="2" IsReadOnly="False" HeadersVisibility="None" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="工  作" IsReadOnly="True" MinWidth="200" Binding="{Binding Path=Value}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="工  作" IsReadOnly="True" Width="*" MinWidth="200" Binding="{Binding Path=Value}" ></DataGridTextColumn>
                 </DataGrid.Columns>
                 <DataGrid.ContextMenu>
                     <ContextMenu Name="dataGridPathsViewMenu" StaysOpen="True">
