@@ -75,13 +75,13 @@ namespace AutomaticStartProgram
             //dataGridPathsViewMenuItemDelete.Click += new RoutedEventHandler(dataGridPathsViewMenuItemDelete_Click);
             //dataGridJobsView.CurrentCellChanged += new EventHandler<EventArgs>(dataGridJobsView_CurrentCellChanged);
             
-            BindPathsData();
-            BindJobsData();
-            
             if (!System.IO.File.Exists(System.Environment.CurrentDirectory + @"\Data.xml"))
             {
                 XMLHelper.CreatePathsXmlDocument();
             }
+            
+            BindPathsData();
+            BindJobsData();
         }
 
         void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
